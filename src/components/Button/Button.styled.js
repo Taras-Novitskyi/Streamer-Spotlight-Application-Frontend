@@ -82,7 +82,24 @@ export const AddBtn = styled.button`
   &:hover,
   &:focus {
     background-color: rgb(19, 45, 74);
-    border: 1px solid #5fc49a;
+    border: 1px solid ${(p) => p.theme.colors.accentColor};
+    outline: none;
+  }
+`;
+
+export const VoteBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent;
+  border: none;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    color: ${(p) => (p.option === "Upvotes" ? "#5fc49a" : "#ce0316")};
     outline: none;
   }
 `;

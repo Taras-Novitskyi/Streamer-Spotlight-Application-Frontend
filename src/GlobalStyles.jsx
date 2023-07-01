@@ -5,7 +5,7 @@ export const GlobalStyles = createGlobalStyle`
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: ${p => p.theme.colors.mainBgColor};
+  background-color: ${(p) => p.theme.colors.darkBgColor};
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

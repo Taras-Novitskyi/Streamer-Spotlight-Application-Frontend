@@ -11,5 +11,4 @@ export const Main = styled.main`
   padding-top: ${(p) => p.theme.space(16)};
 
   color: ${(p) => p.theme.colors.whiteText};
-  background-color: ${(p) => p.theme.colors.darkBgColor};
 `;

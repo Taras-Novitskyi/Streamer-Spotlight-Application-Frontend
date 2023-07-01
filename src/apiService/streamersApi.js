@@ -24,7 +24,7 @@ async function fetchStreamers() {
 
 async function getStreamerById(id) {
   try {
-    const { data } = await axios.get(`/streamers/${id}`);
+    const { data } = await axios.get(`/streamer/${id}`);
 
     return data;
   } catch (error) {
@@ -34,7 +34,7 @@ async function getStreamerById(id) {
 
 async function updateStreamersRating(id, vote) {
   try {
-    const { data } = await axios.post(`/streamers/${id}`, vote);
+    const { data } = await axios.put(`/streamers/${id}/vote`, vote);
 
     return data;
   } catch (error) {

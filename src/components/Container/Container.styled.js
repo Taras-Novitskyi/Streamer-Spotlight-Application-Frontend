@@ -7,11 +7,11 @@ export const StyledContainer = styled.div`
   max-width: ${p => p.theme.breakPoints[0]};
 
   @media screen and (min-width: 768px) {
-    padding: 0 32px;
+    padding: 0 40px;
     max-width: ${p => p.theme.breakPoints[1]};
   }
   @media screen and (min-width: 1440px) {
-    padding: 0 100px;
+    padding: 0 200px;
     max-width: ${p => p.theme.breakPoints[2]};
   }
 `;

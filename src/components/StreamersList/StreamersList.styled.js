@@ -4,54 +4,65 @@ import { NavLink } from "react-router-dom";
 export const List = styled.ul``;
 
 export const Item = styled.li`
-  /* width: 100%; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 
-  padding: ${(p) => p.theme.space(2)};
+  margin-bottom: ${(p) => p.theme.space(4)};
 
   text-transform: uppercase;
   background-color: ${(p) => p.theme.colors.lightBgColor};
   color: ${(p) => p.theme.colors.whiteText};
 
-  border: ${(p) => p.theme.border.blackBtnBorder};
   border-radius: ${(p) => p.theme.space(2)};
+  border-bottom: 1px solid ${(p) => p.theme.colors.lightBgColor};
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
-    background-color: rgb(19, 45, 74);
-    /* border: ${(p) => p.theme.border.greenBtnBorder}; */
-    border: 1px solid #5fc49a;
+    background-color: ${(p) => p.theme.colors.mainBgColor};
+    border-bottom: 1px solid ${(p) => p.theme.colors.accentColor};
     outline: none;
   }
 `;
 
 export const ItemLink = styled(NavLink)`
+  flex-grow: 1;
   display: block;
-  padding: 10px 24px;
+  padding: ${(p) => p.theme.space(4)};
+
   background-color: transparent;
   color: ${(p) => p.theme.colors.footerText};
-  font-family: "Poppins";
+
   font-size: ${(p) => p.theme.fontSizes.l}px;
   line-height: 21px;
-  border: 2px solid #fafafa;
-  border-radius: 24px 44px;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+`;
 
-  @media (min-width: 768px) {
-    padding: 19px 44px;
-    font-size: ${(p) => p.theme.fontSizes.xl}px;
-    line-height: 24px;
-  }
-  @media (min-width: 1440px) {
-    padding: 20px 44px;
-  }
+export const Votes = styled.div`
+  display: flex;
 
-  &:hover,
-  &:focus {
-    color: ${(p) => p.theme.colors.firstAccentColor};
-    border: 2px solid #8baa36;
-    outline: none;
+  padding: ${(p) => p.theme.space(4)};
+`;
+
+export const VotesItem = styled.div`
+  display: flex;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-right: ${(p) => p.theme.space(4)};
   }
+`;
+
+export const VotesCount = styled.p`
+  margin-right: ${(p) => p.theme.space(2)};
+`;
+
+export const UpvotesIcon = styled.div`
+  color: #5fc49a;
+`;
+
+export const DownvotesIcon = styled.div`
+  color: #ce0316;
 `;

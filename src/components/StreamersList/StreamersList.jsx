@@ -1,21 +1,44 @@
 import React, { useEffect, useState } from "react";
+import { ImArrowDown, ImArrowUp } from "react-icons/im";
 
-import { List, Item } from "./StreamersList.styled";
+import {
+  List,
+  Item,
+  ItemLink,
+  Votes,
+  VotesItem,
+  VotesCount,
+  UpvotesIcon,
+  DownvotesIcon,
+} from "./StreamersList.styled";
 
 export const StreamersList = ({ streamers }) => {
   return (
     <div>
       <List>
-        {streamers.map((item, i) => {
+        {streamers.map((item) => {
           return (
             <Item
-              key={i}
+              key={item._id}
               //   style={{
               //     textAlign: item.received ? "left" : "right",
               //   }}
             >
-              {item.name}, {item.platform}, {item.description},{item.upvotes},
-              {item.downvotes}
+              <ItemLink to={`/streamer/${item._id}`}>{item.name}</ItemLink>
+              <Votes>
+                <VotesItem>
+                  <VotesCount>{item.upvotes}</VotesCount>
+                  <UpvotesIcon>
+                    <ImArrowUp />
+                  </UpvotesIcon>
+                </VotesItem>
+                <VotesItem>
+                  <VotesCount>{item.downvotes}</VotesCount>
+                  <DownvotesIcon>
+                    <ImArrowDown />
+                  </DownvotesIcon>
+                </VotesItem>
+              </Votes>
             </Item>
           );
         })}

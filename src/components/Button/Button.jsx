@@ -2,6 +2,7 @@ import {
   SingInBtn,
   RegistrationBtn,
   AddBtn,
+  VoteBtn,
   ButtonUp,
   BackTorecipeBtn,
 } from './Button.styled';
@@ -31,7 +32,13 @@ export const AddButton = ({ type = 'button', onClick, children }) => {
   );
 };
 
-
+export const VotesButton = ({ type = "button", option, onClick, children }) => {
+  return (
+    <VoteBtn type={type} onClick={onClick} option={option}>
+      {children}
+    </VoteBtn>
+  );
+};
 
 export const ButtonScrollUp = ({
   type = 'button',

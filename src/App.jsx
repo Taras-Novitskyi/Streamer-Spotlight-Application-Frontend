@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<MainPage />} />
-            <Route path="streamer" element={<StreamerPage />} />
+            <Route path="streamer/:streamerId" element={<StreamerPage />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
