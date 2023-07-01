@@ -1,38 +1,14 @@
 import styled from "styled-components";
 
 export const NotFoundContainer = styled.div`
-  max-width: 375px;
-  padding-left: 16px;
-  padding-right: 16px;
+  min-height: 100vh;
   margin: 0 auto;
-  margin-bottom: 100px;
 
-  @media screen and (min-width: 768px) {
-    max-width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
-    margin-bottom: 204px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    max-width: 1440px;
-    padding-left: 100px;
-    padding-right: 100px;
-  }
-`;
-
-export const NotFoundImage = styled.img`
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-`;
-
-export const Alert = styled.div`
   font-size: 24px;
   font-weight: 500;
-  margin-top: 148px;
-  margin-bottom: 16px;
   text-align: center;
+  color: ${(p) => p.theme.colors.whiteText};
+  background-color: ${(p) => p.theme.colors.darkBgColor};
 `;
 
 export const AlertContainer = styled.div`
