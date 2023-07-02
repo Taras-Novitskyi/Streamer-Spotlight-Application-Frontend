@@ -79,7 +79,7 @@ export const AddStreamerForm = ({ onSubmit }) => {
 
   return (
     <FormContainer>
-      <Form onSubmit={handleFormSubmit} novalidate="novalidate">
+      <Form onSubmit={handleFormSubmit} noValidate="novalidate">
         <InputContainer>
           <Label htmlFor="name">Name</Label>
           <Input
@@ -104,7 +104,7 @@ export const AddStreamerForm = ({ onSubmit }) => {
             onChange={handleInputChange}
             required
           >
-            <option value="" disabled selected>
+            <option value="" disabled>
               Select platform
             </option>
             <option value="Twitch">Twitch</option>
