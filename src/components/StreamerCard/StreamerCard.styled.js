@@ -22,7 +22,7 @@ export const Container = styled.div`
 `;
 
 export const AvatarContainer = styled.div`
-  height: 300px;
+  height: 260px;
   width: 100%;
   margin-bottom: ${(p) => p.theme.space(4)};
 
@@ -43,7 +43,7 @@ export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 30%;
+  height: 36%;
 
   padding-right: ${(p) => p.theme.space(4)};
   padding-left: ${(p) => p.theme.space(4)};
@@ -62,7 +62,7 @@ export const StreamerPlatform = styled.p`
 export const StreamerDescription = styled.p`
   flex-grow: 1;
 
-  margin-bottom: ${(p) => p.theme.space(4)};
+  margin-bottom: ${(p) => p.theme.space(2)};
 
   font-size: 14px;
   color: rgb(82, 118, 160);
@@ -70,8 +70,12 @@ export const StreamerDescription = styled.p`
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 7;
   white-space: pre-wrap;
+
+  &:hover {
+    overflow: auto;
+  }
 `;
 
 export const StreamerRating = styled.div`
