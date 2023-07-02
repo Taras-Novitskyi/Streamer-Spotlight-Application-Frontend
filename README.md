@@ -1,46 +1,32 @@
-# Getting Started with Create React App and Redux
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+#  Simple Streamer Spotlight Application
+This repository contains the code for a simple streamer spotlight website. Users can add their favorite streamers, vote for them (upvote or downvote), and view the profile card of each created streamer.
+## Features
 
-## Available Scripts
+- User Registration: When a user visits the website, a user account is automatically created and stored in the local storage.
+- Streamer Submission: Users can add their favorite streamers using the "Add Streamer" form. They need to provide the streamer's name, description, and select the streaming platform from a dropdown list.
+- Streamer List: The homepage displays a list of all submitted streamers along with the number of upvotes and downvotes. The list is updated in real-time as new streamers are added and votes are cast.
+- Profile Cards: Users can view the profile card of each streamer, which includes the streamer's name, description, platform, and an image (static image URL).
+- Voting: Users can upvote or downvote streamers to show their preference. Each user is allowed to vote only once for each streamer.
+- Real-time Updates: The streamer list and voting counts are updated in real-time using sockets. This ensures that users see the latest information without manually refreshing the page
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  ## Usage
+On the homepage, you can add your favorite streamer using the "Add Streamer" form. Fill in all the required fields and click the "Add" button.
+The list of streamers will be displayed on the homepage. You can view each streamer's profile card and vote (upvote or downvote) for them by clicking the respective buttons.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Tech Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Client:** React, Redux, Socket
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Server:** Node.js, Express, Socket, MongoDB
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
