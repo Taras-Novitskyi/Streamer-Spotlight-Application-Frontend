@@ -43,6 +43,7 @@ export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 30%;
 
   padding-right: ${(p) => p.theme.space(4)};
   padding-left: ${(p) => p.theme.space(4)};
@@ -59,6 +60,8 @@ export const StreamerPlatform = styled.p`
 `;
 
 export const StreamerDescription = styled.p`
+  flex-grow: 1;
+
   margin-bottom: ${(p) => p.theme.space(4)};
 
   font-size: 14px;

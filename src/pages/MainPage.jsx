@@ -1,40 +1,37 @@
-import React, { useEffect, useState } from "react";
-import { io } from "socket.io-client";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useOutletContext } from "react-router-dom";
 
 import api from "../apiService/streamersApi";
+import { selectStreamers } from "../redux/streamer/selectors";
+import { getStreamers } from "../redux/streamer/operations";
+import { refreshStreamers } from "../redux//streamer/streamerSlice";
 
 import { AddStreamerForm } from "../components/AddStreamerForm/AddStreamerForm";
 import { StreamersList } from "../components/StreamersList/StreamersList";
 import { Container } from "../components/Container/Container";
 
 const MainPage = () => {
-  const [socket, setSocket] = useState(null);
-  const [streamers, setStreamers] = useState([]);
+  const socket = useOutletContext();
+
+  const streamersList = useSelector(selectStreamers);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setSocket(io("http://localhost:3001"));
-  }, []);
-
-  useEffect(() => {
-    (async () => {
-      const data = await api.fetchStreamers();
-      setStreamers(data);
-    })();
-  }, []);
+    dispatch(getStreamers());
+  }, [dispatch]);
 
   useEffect(() => {
     if (!socket) return;
 
     socket.on("updated-streamers", (data) => {
-      console.log("updated-streamers", data);
-      setStreamers(data);
-      //   setChat((prev) => [...prev, { data: data, received: true }]);
+      dispatch(refreshStreamers(data));
     });
 
     return () => {
       socket.off("updated-streamers");
     };
-  }, [socket]);
+  }, [dispatch, socket]);
 
   const handleSubmit = async (newStreamer) => {
     const data = await api.addStreamer(newStreamer);
@@ -44,7 +41,7 @@ const MainPage = () => {
   return (
     <Container>
       <AddStreamerForm onSubmit={handleSubmit} />
-      <StreamersList streamers={streamers} />
+      <StreamersList streamers={streamersList} />
     </Container>
   );
 };

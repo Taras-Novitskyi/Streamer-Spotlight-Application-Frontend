@@ -15,17 +15,20 @@ import {
   VotesCount,
 } from "./StreamerCard.styled";
 
-// import api from "../apiService/streamersApi";
+import api from "../../apiService/streamersApi";
 
 export const StreamerCard = ({ streamer, onVotesClick }) => {
   const { _id, name, platform, description, avatar, upvotes, downvotes } =
     streamer;
 
-  const handleUpVotes = () => {
+  const handleUpVotes = async () => {
     onVotesClick({ upvotes: 1 });
+    // const votes = { upvotes: 1, downvotes: 0 };
+    // const data = await api.updateStreamersRating(_id, votes);
+    // setStreamer(updatedStreamer);
   };
 
-  const handleDownVotes = () => {
+  const handleDownVotes = async () => {
     onVotesClick({ downvotes: 1 });
   };
 

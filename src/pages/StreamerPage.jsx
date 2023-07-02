@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useOutletContext } from "react-router-dom";
 
 import api from "../apiService/streamersApi";
 import { Container } from "../components/Container/Container";
@@ -8,6 +8,8 @@ import { StreamerCard } from "../components/StreamerCard/StreamerCard";
 const StreamerPage = () => {
   const [streamer, setStreamer] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const socket = useOutletContext();
 
   const { streamerId } = useParams();
 
@@ -30,7 +32,10 @@ const StreamerPage = () => {
   const handleVotesClick = async ({ upvotes = 0, downvotes = 0 }) => {
     const votes = { upvotes, downvotes };
 
-    await api.updateStreamersRating(streamerId, votes);
+    const data = await api.updateStreamersRating(streamerId, votes);
+    setStreamer((prev) => ({ ...prev, ...data }));
+
+    socket.emit("get-streamers", data);
   };
 
   return (
