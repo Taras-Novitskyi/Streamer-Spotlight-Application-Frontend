@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { ImArrowDown, ImArrowUp } from "react-icons/im";
 
+import { selectUser } from "../../redux/streamer/selectors";
 import { VotesButton } from "../Button/Button";
 import {
   Container,
@@ -15,21 +16,21 @@ import {
   VotesCount,
 } from "./StreamerCard.styled";
 
-import api from "../../apiService/streamersApi";
-
 export const StreamerCard = ({ streamer, onVotesClick }) => {
-  const { _id, name, platform, description, avatar, upvotes, downvotes } =
+  const { name, platform, description, avatar, upvotes, downvotes } =
     streamer;
 
+  const userId = useSelector(selectUser);
+
+  const isUpvote = upvotes.indexOf(userId);
+  const isDownvote = downvotes.indexOf(userId);
+
   const handleUpVotes = async () => {
-    onVotesClick({ upvotes: 1 });
-    // const votes = { upvotes: 1, downvotes: 0 };
-    // const data = await api.updateStreamersRating(_id, votes);
-    // setStreamer(updatedStreamer);
+    onVotesClick({ upvotes: userId });
   };
 
   const handleDownVotes = async () => {
-    onVotesClick({ downvotes: 1 });
+    onVotesClick({ downvotes: userId });
   };
 
   return (
@@ -44,17 +45,27 @@ export const StreamerCard = ({ streamer, onVotesClick }) => {
       </InfoContainer>
       <StreamerRating>
         <VotesItem>
-          <VotesCount>{upvotes}</VotesCount>
+          <VotesCount>{upvotes.length}</VotesCount>
           <VotesButton
-            children={<ImArrowUp size={20} />}
+            children={
+              <ImArrowUp
+                size={20}
+                color={isUpvote === -1 ? "#000000" : "#5fc49a"}
+              />
+            }
             option="Upvotes"
             onClick={handleUpVotes}
           />
         </VotesItem>
         <VotesItem>
-          <VotesCount>{downvotes}</VotesCount>
+          <VotesCount>{downvotes.length}</VotesCount>
           <VotesButton
-            children={<ImArrowDown size={20} />}
+            children={
+              <ImArrowDown
+                size={20}
+                color={isDownvote === -1 ? "#000000" : "#ce0316"}
+              />
+            }
             option="Downvotes"
             onClick={handleDownVotes}
           />

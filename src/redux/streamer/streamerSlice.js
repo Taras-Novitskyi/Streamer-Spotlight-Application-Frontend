@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getStreamers, updateStreamers, updateSocket } from "./operations";
+import { getStreamers } from "./operations";
 
 const initialState = {
-  user: { name: null, verify: false },
+  user: null,
   streamers: [],
-  isLoggedIn: false,
   isLoading: false,
   error: null,
 };
@@ -22,8 +21,18 @@ const streamerSlice = createSlice({
   name: "streamers",
   initialState,
   reducers: {
+    createUser: (state, action) => {
+      if (!state.user) {
+        state.user = action.payload;
+      }
+    },
     refreshStreamers: (state, action) => {
       state.streamers = action.payload;
+    },
+    refreshError: (state, action) => {
+      if (!state.user) {
+        state.error = action.payload;
+      }
     },
   },
   extraReducers: (builder) =>
@@ -34,8 +43,9 @@ const streamerSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(getStreamers.rejected, handleIsLoadingRejected)
+      .addCase(getStreamers.rejected, handleIsLoadingRejected),
 });
 
 export const streamerReducer = streamerSlice.reducer;
-export const { refreshStreamers } = streamerSlice.actions;
+export const { refreshStreamers, createUser, refreshError } =
+  streamerSlice.actions;

@@ -1,44 +1,45 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL =
+  "https://streamer-spotlight-application-backend.onrender.com";
 
 async function addStreamer(streamer) {
   try {
-    const { data } = await axios.post("/streamers", streamer);
+    const data = await axios.post("/streamers", streamer);
 
     return data;
   } catch (error) {
-    console.error(error);
+    return error;
   }
 }
 
 async function fetchStreamers() {
   try {
-    const { data } = await axios.get(`/streamers`);
+    const data = await axios.get(`/streamers`);
 
     return data;
   } catch (error) {
-    console.error(error);
+    return error;
   }
 }
 
 async function getStreamerById(id) {
   try {
-    const { data } = await axios.get(`/streamer/${id}`);
+    const data = await axios.get(`/streamer/${id}`);
 
     return data;
   } catch (error) {
-    console.error(error);
+    return error;
   }
 }
 
 async function updateStreamersRating(id, vote) {
   try {
-    const { data } = await axios.put(`/streamers/${id}/vote`, vote);
+    const data = await axios.put(`/streamers/${id}/vote`, vote);
 
     return data;
   } catch (error) {
-    console.error(error);
+    return error;
   }
 }
 

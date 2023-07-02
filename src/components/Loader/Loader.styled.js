@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const MiniLoaderOverlay = styled.div`
   display: flex;
@@ -15,5 +15,5 @@ export const MainLoaderOverlay = styled.div`
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  background-color: ${p => p.theme.colors.darkBgColor};
+  background-color: ${(p) => p.theme.colors.darkBgColor};
 `;

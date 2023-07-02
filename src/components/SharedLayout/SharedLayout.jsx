@@ -1,52 +1,44 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
+import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
-import { io } from "socket.io-client";
-// import { useSelector } from 'react-redux';
 
-// import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { selectError, selectIsLoading } from "../../redux/streamer/selectors";
 
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
-// import { MotivationModal } from 'components/MotivationModal/MotivationModal';
-// import { ButtonScrollUp } from 'components/Button/Button';
+import { AlertMessage } from "../AlertMessage/AlertMessage";
+import { MainLoader } from "../Loader/Loader";
 
 import { LayoutContainer, Main } from "./SharedLayout.styled";
 
-export const SharedLayout = ({ onClick }) => {
-  const [socket, setSocket] = useState(null);
-  // const [isButtonUp, setIsButtonUp] = useState(false);
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
-
-  useEffect(() => {
-    setSocket(io("http://localhost:3001"));
-    //   window.addEventListener('scroll', () => {
-    //     if (window.scrollY > 200) {
-    //       setIsButtonUp(true);
-    //       return;
-    //     }
-    //     setIsButtonUp(false);
-    //   });
-  }, []);
-
-  // const handleOnScrollUp = () => {
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: 'smooth',
-  //   });
-  // };
+export const SharedLayout = () => {
+  const error = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
 
   return (
     <LayoutContainer>
-      <Header />
-      <Main>
-        <Suspense>
-          <Outlet  context={socket} />
-        </Suspense>
-      </Main>
-      <Footer />
-      {/* <ButtonScrollUp isButtonUp={isButtonUp} onClick={handleOnScrollUp}>
-        ^
-      </ButtonScrollUp> */}
+      {isLoading ? (
+        <MainLoader />
+      ) : (
+        <>
+          <Header />
+          <Main>
+            {error ? (
+              <AlertMessage>
+                Something wrong, please try again later or contact our support
+                team for further assistance. Thank you for your understanding.
+              </AlertMessage>
+            ) : (
+              <>
+                <Suspense>
+                  <Outlet />
+                </Suspense>
+              </>
+            )}
+          </Main>
+          <Footer />
+        </>
+      )}
     </LayoutContainer>
   );
 };

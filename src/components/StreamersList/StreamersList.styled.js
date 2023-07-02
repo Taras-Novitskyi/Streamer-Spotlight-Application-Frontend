@@ -4,10 +4,10 @@ import { NavLink } from "react-router-dom";
 export const List = styled.ul``;
 
 export const Item = styled.li`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* align-items: center; */
+  /* justify-content: space-between; */
 
   margin-bottom: ${(p) => p.theme.space(4)};
 
@@ -29,15 +29,30 @@ export const Item = styled.li`
 `;
 
 export const ItemLink = styled(NavLink)`
-  flex-grow: 1;
-  display: block;
-  padding: ${(p) => p.theme.space(4)};
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  padding-right: ${(p) => p.theme.space(4)};
+  padding-left: ${(p) => p.theme.space(4)};
 
   background-color: transparent;
   color: ${(p) => p.theme.colors.footerText};
 
   font-size: ${(p) => p.theme.fontSizes.l}px;
   line-height: 21px;
+`;
+
+export const DataName = styled.div`
+  display: flex;
+  flex-grow: 1;
+
+  background-color: transparent;
+  color: ${(p) => p.theme.colors.darkBgColor};
+
+  font-size: ${(p) => p.theme.fontSizes.l}px;
+  line-height: 21px;
+  font-weight: 600;
 `;
 
 export const Votes = styled.div`
@@ -57,12 +72,21 @@ export const VotesItem = styled.div`
 
 export const VotesCount = styled.p`
   margin-right: ${(p) => p.theme.space(2)};
+
+  font-size: ${(p) => p.theme.fontSizes.l}px;
+  line-height: 21px;
+  font-weight: 600;
+  color: ${(p) => p.theme.colors.darkBgColor};
 `;
 
 export const UpvotesIcon = styled.div`
+  display: flex;
+  align-items: center;
   color: #5fc49a;
 `;
 
 export const DownvotesIcon = styled.div`
+  display: flex;
+  align-items: center;
   color: #ce0316;
 `;

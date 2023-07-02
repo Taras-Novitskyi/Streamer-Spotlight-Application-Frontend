@@ -23,10 +23,10 @@ export const MainLoader = () => {
   return (
     <MainLoaderOverlay>
       <Spinner
-        height="250"
-        width="250"
+        height="230"
+        width="230"
         radius="9"
-        color="#8BAA36"
+        color="#7295BC"
         ariaLabel="three-dots-loading"
         wrapperStyle={{}}
         wrapperClassName=""

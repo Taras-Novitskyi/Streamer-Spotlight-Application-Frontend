@@ -8,20 +8,9 @@ export const AlertWrapper = styled.div`
 
 export const Message = styled.p`
   display: inline-block;
-  font-family: "Poppins";
-  font-weight: 600;
+
   font-size: ${(p) => p.theme.fontSizes.xxl}px;
   line-height: 28px;
   letter-spacing: -0.02em;
-  color: ${(p) => p.theme.colors.lightText};
-
-  @media (min-width: 768px) {
-    font-size: 32px;
-    line-height: 32px;
-  }
-
-  @media (min-width: 1440px) {
-    font-size: ${(p) => p.theme.fontSizes.xxxl}px;
-    line-height: 44px;
-  }
+  color: ${(p) => p.theme.colors.whiteText};
 `;

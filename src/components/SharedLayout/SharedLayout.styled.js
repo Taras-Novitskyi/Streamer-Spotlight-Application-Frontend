@@ -8,7 +8,6 @@ export const LayoutContainer = styled.div`
 
 export const Main = styled.main`
   flex-grow: 1;
-  padding-top: ${(p) => p.theme.space(16)};
 
   color: ${(p) => p.theme.colors.whiteText};
 `;

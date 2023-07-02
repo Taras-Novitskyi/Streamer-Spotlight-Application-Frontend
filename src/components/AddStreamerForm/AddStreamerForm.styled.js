@@ -5,7 +5,7 @@ export const FormContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  padding-top: ${(p) => p.theme.space(14)};
+  padding-top: ${(p) => p.theme.space(2)};
 `;
 
 export const Form = styled.form`
@@ -27,8 +27,11 @@ export const Form = styled.form`
 `;
 
 export const Label = styled.label`
-  margin-bottom: ${(p) => p.theme.space(1)};
+  margin-bottom: ${(p) => p.theme.space(2)};
   margin-left: ${(p) => p.theme.space(2)};
+
+  font-size: ${(p) => p.theme.fontSizes.l}px;
+  color: ${(p) => p.theme.colors.lightBgColor};
 `;
 
 export const Input = styled.input`
@@ -38,8 +41,9 @@ export const Input = styled.input`
   margin-bottom: ${(p) => p.theme.space(5)};
   padding: ${(p) => p.theme.space(2)};
 
+  font-size: ${(p) => p.theme.fontSizes.l}px;
   color: ${(p) => p.theme.colors.whiteText};
-  background-color: rgb(19, 45, 74);
+  background-color: ${(p) => p.theme.colors.inputBgColor};
   border-radius: 4px;
   border: none;
   outline: none;
@@ -53,7 +57,7 @@ export const Select = styled.select`
   padding: ${(p) => p.theme.space(2)};
 
   color: ${(p) => p.theme.colors.whiteText};
-  background-color: rgb(19, 45, 74);
+  background-color: ${(p) => p.theme.colors.inputBgColor};
   border-radius: 4px;
   border: none;
   outline: none;
@@ -67,15 +71,28 @@ export const Textarea = styled.textarea`
   padding: ${(p) => p.theme.space(2)};
 
   color: ${(p) => p.theme.colors.whiteText};
-  background-color: rgb(19, 45, 74);
+  background-color: ${(p) => p.theme.colors.inputBgColor};
   border-radius: 4px;
   border: none;
   outline: none;
   resize: none;
 `;
 
+export const InputContainer = styled.div`
+  position: relative;
+`;
+
 export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+export const ErrorContainer = styled.span`
+  position: absolute;
+  bottom: 4px;
+  right: 12px;
+
+  font-size: ${(p) => p.theme.fontSizes.m}px;
+  color: #ce0316;
 `;

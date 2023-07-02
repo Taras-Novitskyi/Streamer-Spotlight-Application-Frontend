@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
 export const FooterStyled = styled.footer`
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   height: ${(p) => p.theme.space(16)};
-  background-color: ${(p) => p.theme.colors.darkBgColor};
 `;
 
-export const BottomWrapper = styled.div`
-  position: relative;
-  text-align: center;
-
-  color: ${(p) => p.theme.colors.whiteText};
-  background-color: transparent;
+export const TextWrapper = styled.p`
+  font-size: ${(p) => p.theme.fontSizes.m}px;
+  color: ${(p) => p.theme.colors.lightBgColor};
 `;
